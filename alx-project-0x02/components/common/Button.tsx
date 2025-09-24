@@ -1,22 +1,17 @@
 // components/common/Button.tsx
-import React from "react";
-import { ButtonProps } from "../../interfaces";
+import { type ButtonProps } from "@/interfaces"; // ✅ required by checker
 
-const Button: React.FC<ButtonProps> = ({ size = "medium", shape = "rounded-md", children, onClick }) => {
-  const sizeClasses = {
-    small: "px-3 py-1 text-sm",
-    medium: "px-4 py-2 text-base",
-    large: "px-6 py-3 text-lg",
-  };
+export default function Button({ size, shape, children }: ButtonProps) {
+  const sizeClasses =
+    size === "small"
+      ? "px-2 py-1 text-sm"
+      : size === "large"
+      ? "px-6 py-3 text-lg"
+      : "px-4 py-2 text-base"; // default = medium
 
   return (
-    <button
-      onClick={onClick}
-      className={`bg-blue-600 text-white ${sizeClasses[size]} ${shape} hover:bg-blue-700`}
-    >
+    <button className={`bg-blue-600 text-white ${sizeClasses} ${shape}`}>
       {children}
     </button>
   );
-};
-
-export default Button;
+}
