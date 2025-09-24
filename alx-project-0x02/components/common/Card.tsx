@@ -1,14 +1,11 @@
 // components/common/Card.tsx
-import React from "react";
-import { CardProps } from "../../interfaces";
+import { type CardProps } from "@/interfaces"; // ✅ required import
 
-const Card: React.FC<CardProps> = ({ title, content }) => {
+export default function Card({ title, content }: CardProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 max-w-sm hover:shadow-lg transition-shadow duration-300">
-      <h2 className="text-lg font-semibold text-blue-700 mb-2">{title}</h2>
-      <p className="text-gray-600">{content}</p>
+    <div className="border rounded-lg shadow-md p-4 bg-white">
+      <h2 className="text-lg font-bold text-blue-600">{title}</h2>
+      <p className="mt-2 text-gray-700">{content}</p>
     </div>
   );
-};
-
-export default Card;
+}
